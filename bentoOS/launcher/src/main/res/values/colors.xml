@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- BentoOS Color System -->
+    
+    <!-- Backgrounds -->
+    <color name="bento_bg">#0d0d0d</color>
+    <color name="bento_surface">#161616</color>
+    <color name="bento_border_low">#1e1e1e</color>
+    <color name="bento_border_high">#252525</color>
+
+    <!-- Text -->
+    <color name="bento_text_primary">#e0e0e0</color>
+    <color name="bento_text_secondary">#666666</color>
+
+    <!-- Accent -->
+    <color name="bento_accent">#6c6cff</color>
+
+    <!-- Traffic lights -->
+    <color name="btn_close">#FF5F57</color>
+    <color name="btn_minimize">#FFBD2E</color>
+    <color name="btn_maximize">#28C840</color>
+
+    <!-- Dock -->
+    <color name="dock_bg">#CC161616</color>
+
+    <!-- Menubar -->
+    <color name="menubar_bg">#80000000</color>
+
+</resources>
