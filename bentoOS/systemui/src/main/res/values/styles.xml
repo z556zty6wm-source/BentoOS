@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.BentoOS" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/bento_accent</item>
+        <item name="colorPrimaryVariant">@color/bento_accent_dim</item>
+        <item name="colorSecondary">@color/bento_accent</item>
+        <item name="colorSurface">@color/bento_surface</item>
+        <item name="colorBackground">@color/bento_bg</item>
+        <item name="colorOnBackground">@color/bento_text_primary</item>
+        <item name="colorOnSurface">@color/bento_text_primary</item>
+        <item name="colorError">@color/status_error</item>
+        <item name="android:windowBackground">@color/bento_bg</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textColor">@color/bento_text_primary</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.BentoOS.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.BentoOS.Large</item>
+    </style>
+
+    <style name="Theme.BentoOS.Overlay" parent="Theme.BentoOS">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="Theme.BentoOS.Launcher" parent="Theme.BentoOS">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
+    </style>
+
+    <style name="ShapeAppearance.BentoOS.Small" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="ShapeAppearance.BentoOS.Medium" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearance.BentoOS.Large" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="ShapeAppearance.BentoOS.Dock" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+    </style>
+
+    <style name="TextAppearance.BentoOS.Base" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textColor">@color/bento_text_primary</item>
+    </style>
+
+    <style name="TextAppearance.BentoOS.Title" parent="TextAppearance.BentoOS.Base">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="fontWeight">600</item>
+    </style>
+
+    <style name="TextAppearance.BentoOS.Subtitle" parent="TextAppearance.BentoOS.Base">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/bento_text_secondary</item>
+    </style>
+
+    <style name="TextAppearance.BentoOS.Body" parent="TextAppearance.BentoOS.Base">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.BentoOS.Caption" parent="TextAppearance.BentoOS.Base">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/bento_text_secondary</item>
+    </style>
+
+    <style name="TextAppearance.BentoOS.Mono" parent="TextAppearance.BentoOS.Base">
+        <item name="android:fontFamily">@font/jetbrains_mono</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.BentoOS.Menubar" parent="TextAppearance.BentoOS.Base">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="fontWeight">400</item>
+    </style>
+
+    <style name="Widget.BentoOS.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/bento_surface</item>
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/bento_border</item>
+        <item name="strokeWidth">0.5dp</item>
+    </style>
+
+    <style name="Widget.BentoOS.Card.Elevated" parent="Widget.BentoOS.Card">
+        <item name="cardBackgroundColor">@color/bento_surface_elevated</item>
+    </style>
+
+    <style name="Widget.BentoOS.Button" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/bento_accent</item>
+        <item name="android:textColor">@color/bento_text_inverse</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="fontWeight">500</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    </style>
+
+    <style name="Widget.BentoOS.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/bento_border_bright</item>
+        <item name="android:textColor">@color/bento_text_primary</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:fontFamily">@font/inter</item>
+    </style>
+
+    <style name="Widget.BentoOS.Button.Ghost" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/bento_text_secondary</item>
+        <item name="rippleColor">@color/bento_accent_dim</item>
+        <item name="android:fontFamily">@font/inter</item>
+    </style>
+
+    <style name="Widget.BentoOS.ControlTile" parent="Widget.BentoOS.Card">
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardBackgroundColor">@color/bento_surface_elevated</item>
+    </style>
+
+    <style name="Widget.BentoOS.ControlTile.Active" parent="Widget.BentoOS.ControlTile">
+        <item name="cardBackgroundColor">@color/bento_accent_dim</item>
+        <item name="strokeColor">@color/bento_accent</item>
+    </style>
+
+    <style name="Widget.BentoOS.Dock" parent="">
+        <item name="android:background">@drawable/bg_dock_glass</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="Widget.BentoOS.Spotlight" parent="">
+        <item name="android:background">@drawable/bg_spotlight_glass</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    </style>
+
+    <style name="Widget.BentoOS.SpotlightResult" parent="Widget.BentoOS.Card">
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardBackgroundColor">@color/bento_surface</item>
+    </style>
+
+    <style name="Widget.BentoOS.SpotlightResult.Selected" parent="Widget.BentoOS.SpotlightResult">
+        <item name="cardBackgroundColor">@color/bento_accent_dim</item>
+        <item name="strokeColor">@color/bento_accent</item>
+    </style>
+
+    <style name="Widget.BentoOS.Notification" parent="Widget.BentoOS.Card">
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardBackgroundColor">@color/notif_bg</item>
+        <item name="strokeColor">@color/notif_border</item>
+    </style>
+
+    <style name="Widget.BentoOS.WindowTitlebar" parent="">
+        <item name="android:background">@color/bento_surface</item>
+        <item name="android:minHeight">32dp</item>
+    </style>
+
+    <style name="Widget.BentoOS.Divider" parent="">
+        <item name="android:background">@color/bento_border</item>
+        <item name="android:layout_height">0.5dp</item>
+    </style>
+
+    <style name="Widget.BentoOS.Slider" parent="Widget.MaterialComponents.Slider">
+        <item name="thumbColor">@color/bento_accent</item>
+        <item name="trackColorActive">@color/bento_accent</item>
+        <item name="trackColorInactive">@color/bento_border_bright</item>
+        <item name="thumbRadius">8dp</item>
+        <item name="trackHeight">3dp</item>
+    </style>
+
+</resources>
