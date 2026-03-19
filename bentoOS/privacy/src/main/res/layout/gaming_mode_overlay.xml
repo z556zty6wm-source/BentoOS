@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- FPS Counter — top left -->
+    <LinearLayout
+        android:id="@+id/fps_overlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_margin="12dp"
+        android:background="#99161616"
+        android:padding="6dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/fps_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="60"
+            android:textColor="#FF6c6cff"
+            android:textSize="14sp"
+            android:fontFamily="monospace"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" FPS"
+            android:textColor="#FFe0e0e0"
+            android:textSize="14sp"
+            android:fontFamily="monospace"/>
+
+    </LinearLayout>
+
+    <!-- Gaming mode badge — top right -->
+    <LinearLayout
+        android:id="@+id/gaming_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_margin="12dp"
+        android:background="#99161616"
+        android:padding="6dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GAMING"
+            android:textColor="#FF6c6cff"
+            android:textSize="11sp"
+            android:fontFamily="monospace"
+            android:letterSpacing="0.1"/>
+
+    </LinearLayout>
+
+    <!-- Recording indicator — top center -->
+    <LinearLayout
+        android:id="@+id/recording_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="12dp"
+        android:background="#99161616"
+        android:padding="6dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:background="#FFFF5F57"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="6dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="REC"
+            android:textColor="#FFFF5F57"
+            android:textSize="11sp"
+            android:fontFamily="monospace"/>
+
+    </LinearLayout>
+
+    <!-- Gamepad mapper button — bottom right -->
+    <LinearLayout
+        android:id="@+id/gamepad_mapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="12dp"
+        android:background="#99161616"
+        android:padding="10dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MAP"
+            android:textColor="#FFe0e0e0"
+            android:textSize="11sp"
+            android:fontFamily="monospace"/>
+
+    </LinearLayout>
+
+</FrameLayout>
