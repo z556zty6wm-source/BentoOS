@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="560dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#CC161616"
+    android:padding="16dp"
+    android:elevation="32dp">
+
+    <!-- Search bar -->
+    <EditText
+        android:id="@+id/spotlight_search"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#FF1e1e1e"
+        android:textColor="#FFe0e0e0"
+        android:textColorHint="#FF666666"
+        android:hint="Search apps, settings, files..."
+        android:textSize="15sp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:inputType="text"
+        android:imeOptions="actionSearch"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Results -->
+    <ListView
+        android:id="@+id/spotlight_results"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="300dp"
+        android:divider="#FF1e1e1e"
+        android:dividerHeight="1dp"/>
+
+</LinearLayout>
