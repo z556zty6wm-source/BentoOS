@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 100vw;
+    height: 100vh;
+    background: #080808;
+    overflow: hidden;
+    font-family: 'Courier New', monospace;
+  }
+  @keyframes typeCmd {
+    0% { width: 0; }
+    100% { width: 100%; }
+  }
+  @keyframes fadeLine {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  @keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes sq1pop {
+    0% { opacity: 0; transform: scaleY(0); }
+    100% { opacity: 1; transform: scaleY(1); }
+  }
+  @keyframes sq2pop {
+    0% { opacity: 0; transform: scale(0); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes sq3pop {
+    0% { opacity: 0; transform: scale(0); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+  .stage {
+    width: 100%;
+    height: 100vh;
+    background: #080808;
+    position: relative;
+    overflow: hidden;
+  }
+  .terminal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: fadeOut 0.6s ease-out 4.2s forwards;
+  }
+  .cmd-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+  }
+  .prompt {
+    color: #e0e0e0;
+    font-size: 13px;
+    opacity: 0;
+    animation: fadeIn 0.1s ease-out 0.3s forwards;
+    white-space: nowrap;
+  }
+  .cmd {
+    color: #e0e0e0;
+    font-size: 13px;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typeCmd 0.6s steps(18, end) 0.5s forwards;
+  }
+  .cursor {
+    width: 8px;
+    height: 14px;
+    background: #e0e0e0;
+    margin-left: 2px;
+    animation: blink 0.7s step-end infinite, fadeOut 0.1s ease-out 3.8s forwards;
+  }
+  .log1 {
+    color: #888;
+    font-size: 12px;
+    opacity: 0;
+    animation: fadeLine 0.3s ease-out 1.4s forwards;
+    margin-bottom: 4px;
+  }
+  .log2 {
+    color: #888;
+    font-size: 12px;
+    opacity: 0;
+    animation: fadeLine 0.3s ease-out 2.2s forwards;
+    margin-bottom: 4px;
+  }
+  .log3 {
+    color: #888;
+    font-size: 12px;
+    opacity: 0;
+    animation: fadeLine 0.3s ease-out 3.0s forwards;
+  }
+  .logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out 4.6s forwards;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .b-shape {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+  }
+  .sq-tall {
+    width: 22px;
+    height: 50px;
+    background: white;
+    border-radius: 3px;
+    transform-origin: top center;
+    transform: scaleY(0);
+    opacity: 0;
+    animation: sq1pop 0.25s cubic-bezier(0.16,1,0.3,1) 5s forwards;
+  }
+  .sq-right {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .sq-sm-top {
+    width: 22px;
+    height: 24px;
+    background: white;
+    border-radius: 3px;
+    transform: scale(0);
+    opacity: 0;
+    animation: sq2pop 0.25s cubic-bezier(0.16,1,0.3,1) 5.15s forwards;
+  }
+  .sq-sm-bot {
+    width: 22px;
+    height: 24px;
+    background: white;
+    border-radius: 3px;
+    transform: scale(0);
+    opacity: 0;
+    animation: sq3pop 0.25s cubic-bezier(0.16,1,0.3,1) 5.3s forwards;
+  }
+  .wordmark {
+    font-family: 'Courier New', monospace;
+    font-size: 22px;
+    font-weight: 400;
+    color: #e0e0e0;
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: fadeIn 0.4s ease-out 5.5s forwards;
+  }
+  .wordmark span {
+    color: #6c6cff;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="terminal">
+      <div class="cmd-line">
+        <span class="prompt">root@bento:~# </span>
+        <span class="cmd">./start_os.sh</span>
+        <span class="cursor"></span>
+      </div>
+      <div class="log1">loading kernel modules...</div>
+      <div class="log2">mounting volumes...</div>
+      <div class="log3">starting BentoOS...</div>
+    </div>
+
+    <div class="logo">
+      <div class="b-shape">
+        <div class="sq-tall"></div>
+        <div class="sq-right">
+          <div class="sq-sm-top"></div>
+          <div class="sq-sm-bot"></div>
+        </div>
+      </div>
+      <div class="wordmark">Bento<span>OS</span></div>
+    </div>
+  </div>
+</body>
+</html>
