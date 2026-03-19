@@ -49,12 +49,12 @@
     background: #080808;
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .terminal {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     animation: fadeOut 0.6s ease-out 4.2s forwards;
   }
   .cmd-line {
@@ -106,9 +106,6 @@
   }
   .logo {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     opacity: 0;
     animation: fadeIn 0.5s ease-out 4.6s forwards;
     display: flex;
@@ -166,6 +163,17 @@
     color: #6c6cff;
     font-weight: 700;
   }
+  .credit {
+    position: fixed;
+    bottom: 20px;
+    right: 24px;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: #555555;
+    letter-spacing: 1px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out 6s forwards;
+  }
 </style>
 </head>
 <body>
@@ -191,21 +199,9 @@
       </div>
       <div class="wordmark">Bento<span>OS</span></div>
     </div>
- </div>
+  </div>
 
-    <!-- Credit -->
-    <div style="
-        position: fixed;
-        bottom: 20px;
-        right: 24px;
-        font-family: 'Courier New', monospace;
-        font-size: 11px;
-        color: #333333;
-        letter-spacing: 1px;
-        opacity: 0;
-        animation: fadeIn 0.5s ease-out 6s forwards;">
-        Created by Ibtisam
-    </div>
+  <div class="credit">Created by Ibtisam</div>
 
 </body>
 </html>
