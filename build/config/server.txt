@@ -1,0 +1,15 @@
+AWS Instance: ubuntu@16.171.59.16
+Key: bento-key.pem
+AOSP Source: ~/bentoos-source
+Kernel Source: ~/linux-s905x
+Build Output: ~/bentoos-source/out/target/product/generic_arm64/
+Flash Files: ~/bentoos-flash/
+Aidan ROM: ~/aidans-rom.img
+
+Jadoo 5 Partition Layout:
+system  = /dev/block/platform/d0074000.emmc/system  (mmcblk0p12, 2GB)
+data    = /dev/block/platform/d0074000.emmc/data    (mmcblk0p13, 4.4GB)
+boot    = /dev/block/platform/d0074000.emmc/boot    (mmcblk0p9)
+cache   = /dev/block/platform/d0074000.emmc/cache   (mmcblk0p3)
+recovery = /dev/block/platform/d0074000.emmc/recovery (mmcblk0p6)
+cache   = /dev/block/platform/d0074000.emmc/cache   (mmcblk0p3)
