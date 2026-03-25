@@ -1,0 +1,158 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.bentoOS.launcher"
+4    android:versionCode="1"
+5    android:versionName="0.1.0-alpha" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+8-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="34" />
+9-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.BIND_WALLPAPER" />
+11-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:5:5-72
+11-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:5:22-70
+12    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+12-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:6:5-71
+12-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:6:22-69
+13    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+13-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:7:5-80
+13-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:7:22-78
+14    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+14-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:8:5-76
+14-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:8:22-74
+15    <uses-permission android:name="android.permission.REORDER_TASKS" />
+15-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:9:5-71
+15-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:9:22-69
+16    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+16-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:10:5-77
+16-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:10:22-75
+17
+18    <permission
+18-->[androidx.core:core:1.12.0] /home/codespace/.gradle/caches/transforms-3/2aa54b804f9fdfd2b4e1f1394b0d38c3/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+19        android:name="com.bentoOS.launcher.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+19-->[androidx.core:core:1.12.0] /home/codespace/.gradle/caches/transforms-3/2aa54b804f9fdfd2b4e1f1394b0d38c3/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+20        android:protectionLevel="signature" />
+20-->[androidx.core:core:1.12.0] /home/codespace/.gradle/caches/transforms-3/2aa54b804f9fdfd2b4e1f1394b0d38c3/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+21
+22    <uses-permission android:name="com.bentoOS.launcher.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+22-->[androidx.core:core:1.12.0] /home/codespace/.gradle/caches/transforms-3/2aa54b804f9fdfd2b4e1f1394b0d38c3/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+22-->[androidx.core:core:1.12.0] /home/codespace/.gradle/caches/transforms-3/2aa54b804f9fdfd2b4e1f1394b0d38c3/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+23
+24    <application
+24-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:12:5-36:19
+25        android:name="com.bentoOS.launcher.BentoApp"
+25-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:13:9-33
+26        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+26-->[androidx.core:core:1.12.0] /home/codespace/.gradle/caches/transforms-3/2aa54b804f9fdfd2b4e1f1394b0d38c3/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+27        android:debuggable="true"
+28        android:extractNativeLibs="false"
+29        android:hardwareAccelerated="true"
+29-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:16:9-43
+30        android:label="BentoOS"
+30-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:14:9-32
+31        android:supportsRtl="true"
+31-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:17:9-35
+32        android:theme="@style/BentoOS.Theme" >
+32-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:15:9-45
+33        <activity
+33-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:19:9-34:20
+34            android:name="com.bentoOS.launcher.LauncherActivity"
+34-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:20:13-45
+35            android:exported="true"
+35-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:25:13-36
+36            android:launchMode="singleTask"
+36-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:21:13-44
+37            android:resumeWhilePausing="true"
+37-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:23:13-46
+38            android:screenOrientation="landscape"
+38-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:24:13-50
+39            android:stateNotNeeded="true" >
+39-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:22:13-42
+40            <intent-filter>
+40-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:27:13-32:29
+41                <action android:name="android.intent.action.MAIN" />
+41-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:28:17-68
+41-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:28:25-66
+42
+43                <category android:name="android.intent.category.HOME" />
+43-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:29:17-72
+43-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:29:27-70
+44                <category android:name="android.intent.category.DEFAULT" />
+44-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:30:17-75
+44-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:30:27-73
+45                <category android:name="android.intent.category.MONKEY" />
+45-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:31:17-74
+45-->/workspaces/BentoOS/bentoOS/launcher/src/main/AndroidManifest.xml:31:27-72
+46            </intent-filter>
+47        </activity>
+48
+49        <provider
+49-->[androidx.emoji2:emoji2:1.2.0] /home/codespace/.gradle/caches/transforms-3/798c3c0d56d8a0030f37c4437699c0b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+50            android:name="androidx.startup.InitializationProvider"
+50-->[androidx.emoji2:emoji2:1.2.0] /home/codespace/.gradle/caches/transforms-3/798c3c0d56d8a0030f37c4437699c0b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+51            android:authorities="com.bentoOS.launcher.androidx-startup"
+51-->[androidx.emoji2:emoji2:1.2.0] /home/codespace/.gradle/caches/transforms-3/798c3c0d56d8a0030f37c4437699c0b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+52            android:exported="false" >
+52-->[androidx.emoji2:emoji2:1.2.0] /home/codespace/.gradle/caches/transforms-3/798c3c0d56d8a0030f37c4437699c0b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+53            <meta-data
+53-->[androidx.emoji2:emoji2:1.2.0] /home/codespace/.gradle/caches/transforms-3/798c3c0d56d8a0030f37c4437699c0b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+54                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+54-->[androidx.emoji2:emoji2:1.2.0] /home/codespace/.gradle/caches/transforms-3/798c3c0d56d8a0030f37c4437699c0b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+55                android:value="androidx.startup" />
+55-->[androidx.emoji2:emoji2:1.2.0] /home/codespace/.gradle/caches/transforms-3/798c3c0d56d8a0030f37c4437699c0b6/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+56            <meta-data
+56-->[androidx.lifecycle:lifecycle-process:2.6.1] /home/codespace/.gradle/caches/transforms-3/b70073fd12ac38db586bb9904873ae2d/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:29:13-31:52
+57                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+57-->[androidx.lifecycle:lifecycle-process:2.6.1] /home/codespace/.gradle/caches/transforms-3/b70073fd12ac38db586bb9904873ae2d/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:30:17-78
+58                android:value="androidx.startup" />
+58-->[androidx.lifecycle:lifecycle-process:2.6.1] /home/codespace/.gradle/caches/transforms-3/b70073fd12ac38db586bb9904873ae2d/transformed/jetified-lifecycle-process-2.6.1/AndroidManifest.xml:31:17-49
+59            <meta-data
+59-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+60                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+60-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+61                android:value="androidx.startup" />
+61-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+62        </provider>
+63
+64        <receiver
+64-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+65            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+65-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+66            android:directBootAware="false"
+66-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+67            android:enabled="true"
+67-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+68            android:exported="true"
+68-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+69            android:permission="android.permission.DUMP" >
+69-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+70            <intent-filter>
+70-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+71                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+71-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+71-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+72            </intent-filter>
+73            <intent-filter>
+73-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+74                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+74-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+74-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+75            </intent-filter>
+76            <intent-filter>
+76-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+77                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+77-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+77-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+78            </intent-filter>
+79            <intent-filter>
+79-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+80                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+80-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+80-->[androidx.profileinstaller:profileinstaller:1.3.0] /home/codespace/.gradle/caches/transforms-3/dd76ae9b69aaa5645698e1cda2a835e1/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+81            </intent-filter>
+82        </receiver>
+83    </application>
+84
+85</manifest>

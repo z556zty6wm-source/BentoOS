@@ -1,0 +1,78 @@
+[
+    {
+        "merged": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-merged_res-32:/layout_activity_launcher.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-main-34:/layout/activity_launcher.xml"
+    },
+    {
+        "merged": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-merged_res-32:/drawable_ic_bentoos_launcher.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-main-34:/drawable/ic_bentoos_launcher.xml"
+    },
+    {
+        "merged": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-merged_res-32:/drawable_ic_files.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-main-34:/drawable/ic_files.xml"
+    },
+    {
+        "merged": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-merged_res-32:/drawable_traffic_light_minimize.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-main-34:/drawable/traffic_light_minimize.xml"
+    },
+    {
+        "merged": "com.bentoOS.launcher-merged_res-32:/drawable_dock_background.xml.flat",
+        "source": "com.bentoOS.launcher-main-34:/drawable/dock_background.xml"
+    },
+    {
+        "merged": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-merged_res-32:/drawable_dock_background.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-main-34:/drawable/dock_background.xml"
+    },
+    {
+        "merged": "com.bentoOS.launcher-merged_res-32:/layout_activity_launcher.xml.flat",
+        "source": "com.bentoOS.launcher-main-34:/layout/activity_launcher.xml"
+    },
+    {
+        "merged": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-merged_res-32:/drawable_ic_mediaplayer.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-main-34:/drawable/ic_mediaplayer.xml"
+    },
+    {
+        "merged": "com.bentoOS.launcher-merged_res-32:/drawable_traffic_light_minimize.xml.flat",
+        "source": "com.bentoOS.launcher-main-34:/drawable/traffic_light_minimize.xml"
+    },
+    {
+        "merged": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-merged_res-32:/drawable_window_background.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-main-34:/drawable/window_background.xml"
+    },
+    {
+        "merged": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-merged_res-32:/drawable_ic_settings.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-main-34:/drawable/ic_settings.xml"
+    },
+    {
+        "merged": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-merged_res-32:/drawable_traffic_light_maximize.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-main-34:/drawable/traffic_light_maximize.xml"
+    },
+    {
+        "merged": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-merged_res-32:/drawable_ic_gamelauncher.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-main-34:/drawable/ic_gamelauncher.xml"
+    },
+    {
+        "merged": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-merged_res-32:/drawable_traffic_light_close.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-main-34:/drawable/traffic_light_close.xml"
+    },
+    {
+        "merged": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-merged_res-32:/drawable_accent_button.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-main-34:/drawable/accent_button.xml"
+    },
+    {
+        "merged": "com.bentoOS.launcher-merged_res-32:/drawable_traffic_light_close.xml.flat",
+        "source": "com.bentoOS.launcher-main-34:/drawable/traffic_light_close.xml"
+    },
+    {
+        "merged": "com.bentoOS.launcher-merged_res-32:/drawable_traffic_light_maximize.xml.flat",
+        "source": "com.bentoOS.launcher-main-34:/drawable/traffic_light_maximize.xml"
+    },
+    {
+        "merged": "com.bentoOS.launcher-merged_res-32:/layout_item_app.xml.flat",
+        "source": "com.bentoOS.launcher-main-34:/layout/item_app.xml"
+    },
+    {
+        "merged": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-merged_res-32:/drawable_ic_terminal.xml.flat",
+        "source": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-main-34:/drawable/ic_terminal.xml"
+    }
+]

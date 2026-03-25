@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-mergeDebugResources-31:/layout/activity_launcher.xml",
+        "source": "/home/codespace/.gradle/daemon/7.5/com.bentoOS.launcher-main-34:/layout/activity_launcher.xml"
+    },
+    {
+        "merged": "com.bentoOS.launcher-mergeDebugResources-31:/layout/item_app.xml",
+        "source": "com.bentoOS.launcher-main-34:/layout/item_app.xml"
+    },
+    {
+        "merged": "com.bentoOS.launcher-mergeDebugResources-31:/layout/activity_launcher.xml",
+        "source": "com.bentoOS.launcher-main-34:/layout/activity_launcher.xml"
+    }
+]
