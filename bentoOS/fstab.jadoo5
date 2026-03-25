@@ -1,0 +1,7 @@
+# BentoOS fstab for Jadoo 5 (Amlogic S905X)
+# <src>                                                   <mnt_point> <type>  <mnt_flags>                     <fs_mgr_flags>
+/dev/block/platform/d0074000.emmc/system                 /system     ext4    ro,barrier=1                    wait,avb=vbmeta
+/dev/block/platform/d0074000.emmc/data                   /data       ext4    noatime,nosuid,nodev,barrier=1  wait,formattable,fileencryption=aes-256-xts:aes-256-cts
+/dev/block/platform/d0074000.emmc/cache                  /cache      ext4    noatime,nosuid,nodev,barrier=1  wait,formattable
+/dev/block/platform/d0074000.emmc/recovery               /recovery   ext4    ro,barrier=1                    wait
+/dev/block/zram0                                         none        swap    defaults                        zramsize=512MB

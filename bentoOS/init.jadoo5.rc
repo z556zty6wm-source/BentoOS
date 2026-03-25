@@ -1,0 +1,100 @@
+# BentoOS init.rc for Jadoo 5 (Amlogic S905X)
+# Partition layout from /proc/partitions
+
+import /init.environ.rc
+import /init.usb.rc
+import /init.${ro.hardware}.rc
+import /vendor/etc/init/hw/init.${ro.hardware}.rc
+import /init.usb.configfs.rc
+import /init.${ro.zygote}.rc
+
+on early-init
+    # Set up firmware path for AP6212 WiFi
+    write /sys/class/net/eth0/queues/rx-0/rps_cpus f
+    setprop ro.hardware amlogic
+
+on init
+    # Jadoo 5 specific mounts
+    symlink /dev/block/platform/d0074000.emmc/system /dev/block/system
+    symlink /dev/block/platform/d0074000.emmc/data /dev/block/data
+    symlink /dev/block/platform/d0074000.emmc/cache /dev/block/cache
+    symlink /dev/block/platform/d0074000.emmc/boot /dev/block/boot
+
+    # zRAM for 2GB RAM optimization
+    write /proc/sys/vm/page-cluster 0
+    write /proc/sys/vm/swappiness 100
+
+on fs
+    # Mount system partition
+    mount_all /vendor/etc/fstab.amlogic --early
+
+    # Mount system
+    mount ext4 /dev/block/platform/d0074000.emmc/system /system ro barrier=1
+
+    # Mount cache
+    mount ext4 /dev/block/platform/d0074000.emmc/cache /cache nosuid nodev barrier=1
+
+on post-fs
+    # Set permissions for BentoOS
+    chown system system /system
+    chmod 0755 /system
+
+on post-fs-data
+    # Mount data partition
+    mount ext4 /dev/block/platform/d0074000.emmc/data /data nosuid nodev noatime barrier=1 errors=panic
+
+    # BentoOS data dirs
+    mkdir /data/bentoos 0771 system system
+    mkdir /data/bentoos/launcher 0771 system system
+    mkdir /data/bentoos/settings 0771 system system
+
+on boot
+    # WiFi AP6212 firmware path
+    setprop wifi.interface wlan0
+    setprop wlan.driver.status ok
+
+    # Performance tweaks for S905X
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
+
+    # Mali-450 GPU tweaks
+    write /sys/class/mpgpu/scale_enable 1
+
+    # Enable zRAM
+    write /sys/block/zram0/comp_algorithm lz4
+    write /sys/block/zram0/disksize 512M
+    mkswap /dev/block/zram0
+    swapon /dev/block/zram0
+
+    # BentoOS props
+    setprop ro.bentoos.version 1.0
+    setprop ro.bentoos.device jadoo5
+    setprop ro.bentoos.build.date 2026
+
+    # Set default launcher
+    setprop ro.launcher.package com.bentoOS.launcher
+    setprop ro.launcher.class com.bentoOS.launcher.LauncherActivity
+
+    # ADB always enabled for development
+    setprop service.adb.enable 1
+    setprop persist.service.adb.enable 1
+
+service bentoos-init /system/bin/bentoos_init
+    class main
+    user root
+    group root
+    oneshot
+
+on property:sys.boot_completed=1
+    # BentoOS boot complete
+    setprop ro.bentoos.booted 1
+    start bentoos-launcher
+
+service bentoos-launcher /system/bin/am start -n com.bentoOS.launcher/.LauncherActivity
+    class main
+    user system
+    group system
+    oneshot
+    disabled
