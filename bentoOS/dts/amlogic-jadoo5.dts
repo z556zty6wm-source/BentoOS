@@ -1,0 +1,279 @@
+// SPDX-License-Identifier: GPL-2.0
+/*
+ * Device Tree Source for BentoOS on Jadoo5
+ * Amlogic S905X (GXL family) ARM64 SoC
+ *
+ * This is a minimal, generic DTS derived from the upstream
+ * meson-gxl-s905x-khadas-vim.dts for the Jadoo5 streaming box.
+ * It covers the peripherals needed for BentoOS to boot:
+ *   - CPUs, memory, clock tree, UART, eMMC, USB, Ethernet, GPIO
+ *
+ * Build:  dtc -I dts -O dtb -o amlogic-jadoo5.dtb amlogic-jadoo5.dts
+ *   or:   make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- dtbs
+ *         (when placed in arch/arm64/boot/dts/amlogic/)
+ */
+
+/dts-v1/;
+
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/clock/gxl-clkc.h>
+#include <dt-bindings/gpio/meson-gxl-gpio.h>
+#include <dt-bindings/reset/amlogic,meson-gxbb-reset.h>
+
+/ {
+	model = "BentoOS Jadoo5 (Amlogic S905X)";
+	compatible = "amlogic,s905x", "amlogic,meson-gxl";
+	interrupt-parent = <&gic>;
+	#address-cells = <2>;
+	#size-cells = <2>;
+
+	/* ------------------------------------------------------------------
+	 * CPU cluster — quad-core Cortex-A53 @ up to 1.5 GHz
+	 * ------------------------------------------------------------------ */
+	cpus {
+		#address-cells = <2>;
+		#size-cells = <0>;
+
+		cpu0: cpu@0 {
+			device_type = "cpu";
+			compatible = "arm,cortex-a53";
+			reg = <0x0 0x0>;
+			enable-method = "psci";
+			clocks = <&scpi_dvfs 0>;
+			clock-latency = <50000>;
+			#cooling-cells = <2>;
+		};
+		cpu1: cpu@1 {
+			device_type = "cpu";
+			compatible = "arm,cortex-a53";
+			reg = <0x0 0x1>;
+			enable-method = "psci";
+			clocks = <&scpi_dvfs 0>;
+		};
+		cpu2: cpu@2 {
+			device_type = "cpu";
+			compatible = "arm,cortex-a53";
+			reg = <0x0 0x2>;
+			enable-method = "psci";
+			clocks = <&scpi_dvfs 0>;
+		};
+		cpu3: cpu@3 {
+			device_type = "cpu";
+			compatible = "arm,cortex-a53";
+			reg = <0x0 0x3>;
+			enable-method = "psci";
+			clocks = <&scpi_dvfs 0>;
+		};
+	};
+
+	/* ------------------------------------------------------------------
+	 * Memory — 2 GB LPDDR3 (typical Jadoo5 configuration)
+	 * ------------------------------------------------------------------ */
+	memory@0 {
+		device_type = "memory";
+		reg = <0x0 0x00000000 0x0 0x80000000>;
+	};
+
+	/* ------------------------------------------------------------------
+	 * PSCI firmware interface
+	 * ------------------------------------------------------------------ */
+	psci {
+		compatible = "arm,psci-1.0";
+		method = "smc";
+	};
+
+	/* ------------------------------------------------------------------
+	 * Timer
+	 * ------------------------------------------------------------------ */
+	timer {
+		compatible = "arm,armv8-timer";
+		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
+		             <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
+		             <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>,
+		             <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_LOW)>;
+	};
+
+	/* ------------------------------------------------------------------
+	 * SCPI (System Control & Power Interface) — clock/DVFS
+	 * ------------------------------------------------------------------ */
+	scpi_dvfs: clock-controller {
+		compatible = "arm,scpi-clocks";
+		#clock-cells = <1>;
+	};
+
+	/* ------------------------------------------------------------------
+	 * Internal bus
+	 * ------------------------------------------------------------------ */
+	soc {
+		compatible = "simple-bus";
+		#address-cells = <2>;
+		#size-cells = <2>;
+		ranges;
+
+		/* GIC interrupt controller */
+		gic: interrupt-controller@c4301000 {
+			compatible = "arm,gic-400";
+			reg = <0x0 0xc4301000 0x0 0x1000>,
+			      <0x0 0xc4302000 0x0 0x2000>,
+			      <0x0 0xc4304000 0x0 0x2000>,
+			      <0x0 0xc4306000 0x0 0x2000>;
+			interrupt-controller;
+			#interrupt-cells = <3>;
+			interrupts = <GIC_PPI 9 (GIC_CPU_MASK_SIMPLE(4) | IRQ_TYPE_LEVEL_HIGH)>;
+		};
+
+		/* Clock controller */
+		clkc: clock-controller@c883c000 {
+			compatible = "amlogic,gxl-clkc";
+			reg = <0x0 0xc883c000 0x0 0x1000>;
+			#clock-cells = <1>;
+		};
+
+		/* System reset controller */
+		reset: reset-controller@c1104404 {
+			compatible = "amlogic,meson-gxbb-reset";
+			reg = <0x0 0xc1104404 0x0 0x20>;
+			#reset-cells = <1>;
+		};
+
+		/* UART A — serial console (ttyAML0, 115200 baud) */
+		uart_AO: serial@c81004c0 {
+			compatible = "amlogic,meson-gx-uart",
+			             "amlogic,meson-ao-uart";
+			reg = <0x0 0xc81004c0 0x0 0x18>;
+			interrupts = <GIC_SPI 193 IRQ_TYPE_EDGE_RISING>;
+			clocks = <&xtal>, <&clkc CLKID_UART0>;
+			clock-names = "xtal", "pclk";
+			status = "okay";
+		};
+
+		/* Crystal oscillator */
+		xtal: xtal-clk {
+			compatible = "fixed-clock";
+			clock-frequency = <24000000>;
+			clock-output-names = "xtal";
+			#clock-cells = <0>;
+		};
+
+		/* eMMC — internal storage (Jadoo5 partition table) */
+		mmc: mmc@d0074000 {
+			compatible = "amlogic,meson-gx-mmc",
+			             "amlogic,meson-gxl-mmc";
+			reg = <0x0 0xd0074000 0x0 0x800>;
+			interrupts = <GIC_SPI 218 IRQ_TYPE_EDGE_RISING>;
+			clocks = <&clkc CLKID_SD_EMMC_C>,
+			         <&clkc CLKID_SD_EMMC_C_CLK0>,
+			         <&clkc CLKID_FCLK_DIV2>;
+			clock-names = "core", "clkin0", "clkin1";
+			resets = <&reset RESET_SD_EMMC_C>;
+			bus-width = <8>;
+			cap-mmc-highspeed;
+			mmc-hs200-1_8v;
+			no-sdio;
+			no-sd;
+			max-frequency = <200000000>;
+			non-removable;
+			status = "okay";
+		};
+
+		/* USB 2.0 OTG / host */
+		usb0: usb@c9000000 {
+			compatible = "amlogic,meson-gxl-usb-ctrl";
+			reg = <0x0 0xc9000000 0x0 0x40>;
+			interrupts = <GIC_SPI 16 IRQ_TYPE_LEVEL_HIGH>;
+			clocks = <&clkc CLKID_USB>;
+			clock-names = "usb_ctrl";
+			resets = <&reset RESET_USB_OTG>;
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+
+			usb_dwc2: dwc2@c9100000 {
+				compatible = "amlogic,meson-gxl-usb", "snps,dwc2";
+				reg = <0x0 0xc9100000 0x0 0x40000>;
+				interrupts = <GIC_SPI 31 IRQ_TYPE_LEVEL_HIGH>;
+				clocks = <&clkc CLKID_USB1>;
+				clock-names = "otg";
+				dr_mode = "host";
+				status = "okay";
+			};
+		};
+
+		/* Ethernet MAC (10/100 Mbit, internal PHY on S905X) */
+		ethmac: ethernet@c9410000 {
+			compatible = "amlogic,meson-gxbb-dwmac",
+			             "snps,dwmac-3.70a", "snps,dwmac";
+			reg = <0x0 0xc9410000 0x0 0x10000>,
+			      <0x0 0xc8834540 0x0 0x8>;
+			interrupts = <GIC_SPI 8 IRQ_TYPE_EDGE_RISING>;
+			interrupt-names = "macirq";
+			rx-fifo-depth = <4096>;
+			tx-fifo-depth = <2048>;
+			clocks = <&clkc CLKID_ETH>,
+			         <&clkc CLKID_FCLK_DIV2>,
+			         <&clkc CLKID_MPLL2>;
+			clock-names = "stmmaceth", "clkin0", "clkin1";
+			phy-mode = "rmii";
+			status = "okay";
+		};
+
+		/* GPIO controller */
+		gpio: pinctrl@c88344b8 {
+			compatible = "amlogic,meson-gxl-periphs-pinctrl";
+			#address-cells = <1>;
+			#size-cells = <0>;
+			reg = <0x0 0xc88344b8 0x0 0x28>;
+
+			gpio-controller;
+			#gpio-cells = <2>;
+			gpio-ranges = <&gpio 0 0 120>;
+
+			interrupt-controller;
+			#interrupt-cells = <2>;
+			interrupts = <GIC_SPI 64 IRQ_TYPE_EDGE_RISING>,
+			             <GIC_SPI 65 IRQ_TYPE_EDGE_RISING>,
+			             <GIC_SPI 66 IRQ_TYPE_EDGE_RISING>,
+			             <GIC_SPI 67 IRQ_TYPE_EDGE_RISING>,
+			             <GIC_SPI 68 IRQ_TYPE_EDGE_RISING>,
+			             <GIC_SPI 69 IRQ_TYPE_EDGE_RISING>,
+			             <GIC_SPI 70 IRQ_TYPE_EDGE_RISING>,
+			             <GIC_SPI 71 IRQ_TYPE_EDGE_RISING>;
+		};
+
+		/* IR remote receiver */
+		ir: remote@c8100580 {
+			compatible = "amlogic,meson-gxbb-ir";
+			reg = <0x0 0xc8100580 0x0 0x40>;
+			interrupts = <GIC_SPI 196 IRQ_TYPE_EDGE_RISING>;
+			status = "okay";
+		};
+
+		/* Mali-450 MP3 GPU */
+		gpu: gpu@c0000000 {
+			compatible = "amlogic,meson-gxm-mali",
+			             "arm,mali-450";
+			reg = <0x0 0xc0000000 0x0 0x40000>;
+			interrupts = <GIC_SPI 160 IRQ_TYPE_LEVEL_HIGH>,
+			             <GIC_SPI 161 IRQ_TYPE_LEVEL_HIGH>,
+			             <GIC_SPI 162 IRQ_TYPE_LEVEL_HIGH>,
+			             <GIC_SPI 163 IRQ_TYPE_LEVEL_HIGH>,
+			             <GIC_SPI 164 IRQ_TYPE_LEVEL_HIGH>,
+			             <GIC_SPI 165 IRQ_TYPE_LEVEL_HIGH>,
+			             <GIC_SPI 166 IRQ_TYPE_LEVEL_HIGH>,
+			             <GIC_SPI 167 IRQ_TYPE_LEVEL_HIGH>;
+			interrupt-names = "gp", "gpmmu", "pp", "pmu",
+			                  "pp0", "ppmmu0", "pp1", "ppmmu1";
+			clocks = <&clkc CLKID_CLK81>;
+			clock-names = "bus";
+			status = "okay";
+		};
+	};
+
+	/* ------------------------------------------------------------------
+	 * Chosen / boot args
+	 * ------------------------------------------------------------------ */
+	chosen {
+		stdout-path = "serial0:115200n8";
+		bootargs = "root=/dev/mmcblk0p12 rootfstype=ext4 ro console=ttyAML0,115200n8 no_console_suspend earlycon";
+	};
+};
