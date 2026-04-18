@@ -65,7 +65,7 @@ BentoOS/
 Ubuntu 24.04 LTS (also works on 22.04)
 
 ### Hardware (recommended for full build)
-- **CPU cores:** 128 (build auto-detects via `nproc`; set `JOBS=N` to override)
+- **CPU cores:** any modern multi-core CPU (4+ cores); the build auto-detects available cores via `nproc`. Set `JOBS=N` to override. 128-core enterprise servers will complete the build in ~2 hours; a typical 8-core workstation takes ~6-8 hours.
 - **RAM:** 16 GB minimum, 64 GB+ recommended for fast parallel builds
 - **Storage:** 50 GB free workspace
 

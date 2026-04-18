@@ -64,14 +64,15 @@ make_ext4_image() {
     if [[ -d "${src_dir}" && -n "$(ls -A "${src_dir}" 2>/dev/null)" ]]; then
         if command -v debugfs &>/dev/null; then
             # Use debugfs for host-side population (no root needed)
-            find "${src_dir}" -mindepth 1 | while read -r f; do
+            # Use -print0 / read -r -d '' to handle filenames with special chars
+            while IFS= read -r -d '' f; do
                 local rel="${f#${src_dir}/}"
                 if [[ -d "$f" ]]; then
                     debugfs -w "${out_img}" -R "mkdir ${rel}" &>/dev/null 2>&1 || true
                 elif [[ -f "$f" ]]; then
                     debugfs -w "${out_img}" -R "write ${f} ${rel}" &>/dev/null 2>&1 || true
                 fi
-            done
+            done < <(find "${src_dir}" -mindepth 1 -print0)
         else
             warn "  debugfs not found; ${label} image will be empty (populate on device)."
         fi
@@ -177,9 +178,18 @@ EOF
 bundle_aml_image() {
     info "Bundling final AML Burner image..."
     local final_img="${OUTPUT_DIR}/bentoos-jadoo5.img"
-    cd "${OUTPUT_DIR}"
 
-    # Include image.cfg plus all partition images
+    # Verify all required partition images exist before bundling
+    local required_files=( image.cfg boot.img system.img data.img cache.img recovery.img )
+    local missing_files=()
+    for f in "${required_files[@]}"; do
+        [[ -f "${OUTPUT_DIR}/${f}" ]] || missing_files+=("${f}")
+    done
+    if [[ ${#missing_files[@]} -gt 0 ]]; then
+        die "Cannot bundle image — the following files are missing in ${OUTPUT_DIR}: ${missing_files[*]}"
+    fi
+
+    cd "${OUTPUT_DIR}"
     tar -czf "${final_img}" \
         image.cfg \
         boot.img \

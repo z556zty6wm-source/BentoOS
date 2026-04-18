@@ -103,7 +103,11 @@ build_kernel() {
     fi
 
     # Enable important options for Jadoo5 via merge fragment
-    cat > /tmp/bentoos-kernel.config <<'CFG'
+    local _kcfg
+    _kcfg="$(mktemp)"
+    # shellcheck disable=SC2064
+    trap "rm -f '${_kcfg}'" EXIT
+    cat > "${_kcfg}" <<'CFG'
 CONFIG_AMLOGIC_MESON_GX=y
 CONFIG_MESON_GX_MESON8B=y
 CONFIG_ARCH_MESON=y
@@ -126,7 +130,9 @@ CONFIG_LZ4_COMPRESS=y
 CONFIG_CRYPTO_LZ4=y
 CONFIG_INIT_ON_ALLOC_DEFAULT_ON=n
 CFG
-    ./scripts/kconfig/merge_config.sh -m .config /tmp/bentoos-kernel.config 2>/dev/null || true
+    ./scripts/kconfig/merge_config.sh -m .config "${_kcfg}" 2>/dev/null || true
+    rm -f "${_kcfg}"
+    trap - EXIT
 
     make ${MAKEFLAGS} ARCH="${ARCH}" CROSS_COMPILE="${CROSS_COMPILE}" Image modules dtbs
 
@@ -237,7 +243,6 @@ package_image() {
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
-warn() { echo -e "\033[1;33m[build-tizen]\033[0m $*"; }
 
 main() {
     info "=== BentoOS Jadoo5 Build ==="
